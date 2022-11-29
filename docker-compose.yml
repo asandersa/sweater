@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+
+  db:
+    platform: linux/amd64
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - $HOME/docker/volumes/postgres:/var/lib/postgresql/data
+
+      #Чтобы запустить этот файл для работы с docker-compose,
+      #нужно использовать в запросе флаг -f.
+      #docker-compose -f docker-compose.yml up -d
